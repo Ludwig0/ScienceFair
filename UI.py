@@ -2,11 +2,15 @@ import pygame, abc
 from abc import ABC, ABCMeta
 from pygame.locals import *
 
-class Drawable(ABC):
-    def __init__(self, position, width, height, imagePath):
+class Drawable:
+    def __init__(self, position, width, height, centered,imagePath):
         #init vars
-        self.x = position[0] - int(width/2)
-        self.y = position[1] - int(height/2)
+        if centered:
+            self.x = position[0] - width/2
+            self.y = position[1] - height/2
+        else:
+            self.x = position[0]
+            self.y = position[1]
         self.position = (self.x, self.y)
         self.width = width
         self.height = height
@@ -20,7 +24,7 @@ class Drawable(ABC):
 class Button(Drawable):
     @abc.abstractmethod
     def __init__(self, position, width, height, text):
-        super().__init__(position, width, height, "Button.png")
+        super().__init__(position, width, height, True, "Button.png")
         #makes this abstract
         __metaclass__ = ABCMeta
                 

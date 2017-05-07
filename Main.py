@@ -1,21 +1,23 @@
-import pygame, sys, UI
+import pygame, sys, UI, Screen
 from pygame.locals import *
 
+WIDTH = 400
+HEIGHT = 600
+
 pygame.init()
-display = pygame.display.set_mode((640,480))
+display = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("Network Science Fair")
-buttons = []
-buttons.append(UI.MenuButton(display.get_rect().center, 300, 90, "test"))
+currentScreen = Screen.MainMenu(WIDTH, HEIGHT)
+
 while True:
-    display.fill((255, 255, 255))
-    for button in buttons:
-        display.blit(button.surface, button.position)
+    currentScreen.drawScreen()
+    display.blit(currentScreen.surface, (0,0))
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
         elif event.type == MOUSEBUTTONDOWN:
-            for button in buttons:
+            for button in currentScreen.buttons:
                 button.event(event.pos)
             print(event.button, " @ coord ", event.pos)
     pygame.display.update()
