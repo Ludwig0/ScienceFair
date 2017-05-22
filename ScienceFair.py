@@ -8,7 +8,7 @@ class ScienceFair:
         pygame.init()
         self.display = pygame.display.set_mode((width, height))
         pygame.display.set_caption("Network Science Fair")
-        test = UI.CenteredText(200, "Hello this is a testk and I hope it works")
+        test = UI.CenteredText(200, "Hello this is a test and I hope it works")
         [print(x) for x in test.lines]
     #puts up main menu and starts main game loop
     def start(self):

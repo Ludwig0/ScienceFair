@@ -70,7 +70,4 @@ class CenteredText:
             currentLineSize = self.font.size("".join([x for x in line]))
             if currentLineSize[0] > width:
                 self.lines.append("".join([x for x in line[:len(line)-1]]))
-                line = line[len(line)-1:]        
-    
-        
-        
+                line = line[len(line)-1:]
